@@ -1,0 +1,42 @@
+<mat-card>
+    <mat-card-content>
+        <div class="header">
+            <h2>LOGIN</h2>
+        </div>
+        <form>
+            <form [formGroup]="login">
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Username:</mat-label>
+                        <input matInput placeholder="Username" name="uname" type="text" formControlName="uname"
+                            required>
+                    </mat-form-field>
+                    <p class="text-danger" *ngIf="login.controls['uname'].dirty && login.hasError('required','uname')">
+                        *uname is required</p>
+                    <div *ngIf="submitted && login.controls.uname.errors" class="text-danger">
+                        <div *ngIf="submitted && login.controls.uname.errors" .required>uname is required</div>
+                    </div>
+                </div>
+                <div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Password:</mat-label>
+                        <input matInput placeholder="Password" name="pwd" type="password" formControlName="pwd"
+                            required>
+
+                    </mat-form-field>
+                    <p class="text-danger" style="font-size: small;"
+                        *ngIf="login.controls['pwd'].dirty && login.hasError('required','password')">* required Password
+                    </p>
+                    <span class="aLink"><a href="/home">Forgot Password?</a></span>
+
+                </div>
+                <p>
+                    <button mat-raised-button type="submit" (click)="onSubmit()">Login</button>
+                </p>
+
+            </form>
+            <a mat-list-item routerLink="/signup" routerLinkActive="list-item-active"> New User</a>
+        </form>
+
+    </mat-card-content>
+</mat-card>
